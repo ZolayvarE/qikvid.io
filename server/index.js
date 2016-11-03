@@ -1,22 +1,14 @@
-var server = require('./config/app-config.js');
-var app = require('express')();
+var server = require('./config/socket-config.js');
 
 var port = process.env.PORT || 8443;
-server.listen(port);
 
-console.log('HTTPS server Listening on port:', port);
-
-
-app.get('*', function (req, res) {
-  // res.redirect('https://qikvid.herokuapp.com/');
-  res.send('hello!');
+server.listen(8443, function () {
+  console.log('Server now listening on port:', port);
 });
 
-port = process.env.PORT || 8080;
 
-app.listen(port);
 
-console.log('HTTP server Listening on port:', port);
+
 
 
 

@@ -1,7 +1,7 @@
 {
   "name": "qikvid",
   "version": "1.0.0",
-  "description": "A WebRTC platform for making trivially easy video calls.",
+  "description": "A WebRTC platform that makes video calling trivial.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,11 +10,11 @@
   "author": "Eric Zolayvar",
   "license": "ISC",
   "dependencies": {
-    "cheerio": "^0.22.0",
     "express": "^4.14.0",
     "http": "0.0.0",
     "https": "^1.0.0",
     "nodemon": "^1.11.0",
+    "path": "^0.12.7",
     "request": "^2.75.0",
     "socket.io": "^1.5.0"
   }
