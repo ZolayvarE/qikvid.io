@@ -1,9 +1,15 @@
 var server = require('./server-config.js');
 
-var socket = require('socket.io')(server);
+var io = require('socket.io');
+var socket = io.listen(server);
 
-socket.on('boom!', function () {
-	socket.emit('bam!');
+socket.on('connection', function () {
+
+  socket.on('boom', function () {
+    console.log(arguments);
+    socket.emit('bam', 'hello!');
+  });
+
 });
 
 module.exports = server;
