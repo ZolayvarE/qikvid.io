@@ -2,7 +2,7 @@
   "name": "qikvid",
   "version": "1.0.0",
   "description": "A WebRTC platform that makes video calling trivial.",
-  "main": "index.js",
+  "main": "nodemon index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/index.js"
@@ -15,7 +15,6 @@
     "https": "^1.0.0",
     "nodemon": "^1.11.0",
     "path": "^0.12.7",
-    "request": "^2.75.0",
     "socket.io": "^1.5.0"
   }
 }
