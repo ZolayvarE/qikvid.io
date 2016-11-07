@@ -17,8 +17,7 @@ navigator.getUserMedia({
 
 }, function (error) {
 
-  console.log(error);
-  // location.pathname = '/error/nomedia';
+  location.pathname = '/error/nomedia';
 
 });
 

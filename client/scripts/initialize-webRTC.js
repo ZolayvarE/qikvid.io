@@ -48,10 +48,14 @@ var initializeWebRTC = function (ownStream) {
 
       peers[target].oniceconnectionstatechange = function () {
 
-        if (peers[target].iceConenctionState === 'complete') {
+        if (peers[target].iceConnectionState === 'complete') {
+
           socket.disconnect();
+
         } else if (peers[target].iceConnectionState === 'failed') {
+
           location.reload();
+
         }
 
       };
@@ -104,9 +108,13 @@ var initializeWebRTC = function (ownStream) {
     peers[data.senderId].oniceconnectionstatechange = function () {
 
       if (peers[data.senderId].iceConnectionState === 'complete') {
+
         socket.disconnect();
+
       } else if (peers[data.senderId].iceConnectionState === 'failed') {
+
         location.reload();
+
       }
 
     };
@@ -121,6 +129,7 @@ var initializeWebRTC = function (ownStream) {
         recipientId: data.senderId,
         answer: answerObject,
       });
+
     }, function (error) {
       console.log(error);
     });
@@ -137,6 +146,14 @@ var initializeWebRTC = function (ownStream) {
   socket.on('ICE candidate', function (data) {
     peers[data.senderId].addIceCandidate(new RTCIceCandidate(data.candidate));
   });
+
+
+
+  socket.on('full room', function () {
+    location.pathname = '/error/fullroom'
+  });
+
+
 
 
 

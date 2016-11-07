@@ -9,13 +9,16 @@ require('socket.io')
       var room = socket.adapter.rooms[roomName];
       var webRTCTargets;
 
+
       if (!room) {
 
         socket.join(roomName);
 
         webRTCTargets = [];
 
-      } else if (room.sockets.length >= 2) {
+      } else if (Object.keys(room.sockets).length >= 2) {
+
+        socket.emit('full room');
 
         webRTCTargets = [];
 
