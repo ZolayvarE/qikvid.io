@@ -46,6 +46,16 @@ var initializeWebRTC = function (ownStream) {
         }
       };
 
+      peers[target].oniceconnectionstatechange = function () {
+
+        if (peers[target].iceConenctionState === 'complete') {
+          socket.disconnect();
+        } else if (peers[target].iceConnectionState === 'failed') {
+          location.reload();
+        }
+
+      };
+
       peers[target].createOffer(function (offerObject) {
 
         peers[target].setLocalDescription(offerObject);
@@ -89,6 +99,16 @@ var initializeWebRTC = function (ownStream) {
         });
 
       }
+    };
+
+    peers[data.senderId].oniceconnectionstatechange = function () {
+
+      if (peers[data.senderId].iceConnectionState === 'complete') {
+        socket.disconnect();
+      } else if (peers[data.senderId].iceConnectionState === 'failed') {
+        location.reload();
+      }
+
     };
 
     peers[data.senderId].setRemoteDescription(new RTCSessionDescription(data.offer));
