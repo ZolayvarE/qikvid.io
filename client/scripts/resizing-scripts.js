@@ -1,7 +1,7 @@
 var resizeLoadingIcon = function () {
   var loadingIcon = document.getElementById('loadingIcon');
 
-  if (loadingIcon.style.display !== 'none') {
+  if (loadingIcon && loadingIcon.style.display !== 'none') {
     var shortestSide = Math.min(window.innerWidth, window.innerHeight);
     loadingIcon.height = shortestSide / 2;
     loadingIcon.width = shortestSide / 2;
@@ -16,7 +16,7 @@ var resizeLoadingIcon = function () {
 var resizeLocalVideo = function () {
   var localVideo = document.getElementById('localVideo');
 
-  if (localVideo.style.display !== 'none') {
+  if (localVideo && localVideo.style.display !== 'none') {
 
     localVideo.style = [
       'position: fixed',
@@ -31,7 +31,7 @@ var resizeLocalVideo = function () {
 var resizeRemoteVideo = function () {
   var remoteVideo = document.getElementById('remoteVideo');
 
-  if (remoteVideo.style.display !== 'none') {
+  if (remoteVideo && remoteVideo.style.display !== 'none') {
     var videoAspectRatio = remoteVideo.videoWidth / remoteVideo.videoHeight;
     var windowAspectRatio = window.innerWidth / window.innerHeight;
 
