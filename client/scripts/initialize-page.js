@@ -1,42 +1,23 @@
 var initializePage = function () { 
 
   document.body.style = 'background-color: #000000; margin: 0px 0px;';
-  var loadingIcon = document.createElement('img');
-  loadingIcon.src = './assets/loadingIcon.gif';
 
-  var previousWidth;
-  var previousHeight;
-  var resizeLoadingIcon = function () {
-    if (innerWidth === previousWidth && innerHeight === previousHeight) {
-      return;
-    } else if (innerWidth > innerHeight) {
-      var shortestSide = innerHeight;
-    } else {
-      var shortestSide = innerWidth;
-    }
+  document.body.innerHTML += '<img id="loadingIcon" src="./assets/loadingIcon.gif">';
 
-    loadingIcon.height = shortestSide / 2;
-    loadingIcon.width = shortestSide / 2;
-    loadingIcon.style = [
-      'position: relative;',
-      'left: ' + ((innerWidth - loadingIcon.width) / 2) + 'px;',
-      'top: ' + ((innerHeight - loadingIcon.height) / 2) + 'px;'
-    ].join('');
+  document.getElementById('loadingIcon').style = 'display: none';
+  document.getElementById('remoteVideo').style = 'display: none';
+  document.getElementById('localVideo').style = 'display: none';
 
-    previousHeight = innerHeight;
-    previousWidth = innerWidth;
+  window.onresize = function () {
+    resizeLoadingIcon();
+    resizeRemoteVideo();
+    resizeLocalVideo();
   };
 
-  resizeLoadingIcon();
+  resizeRemoteVideo();
+  resizeLocalVideo();
 
-  var resizingInterval = setInterval(resizeLoadingIcon, 1000);
-
-  document.body.appendChild(loadingIcon);
-
-  return {
-    interval: resizingInterval,
-    element: loadingIcon
-  };
+  initializeLoadingIcon();
 
 };
 

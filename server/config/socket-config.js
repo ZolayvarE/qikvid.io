@@ -19,7 +19,6 @@ require('socket.io')
       } else if (Object.keys(room.sockets).length >= 2) {
 
         socket.emit('full room');
-
         webRTCTargets = [];
 
       } else {
